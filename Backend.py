@@ -35,7 +35,7 @@ def predict():
 
         for col in required_columns:
             if col not in df.columns:
-                df[col] = 0 
+                df[col] = 0  
 
         transformed_features = pipeline.transform(df)
         print("Transformed Features:")
@@ -43,8 +43,8 @@ def predict():
 
         results = {}
         for model_name, model in models.items():
-            prediction = model.predict(transformed_features)
-            results[model_name] = prediction[0].item() 
+            predictions = model.predict(transformed_features)
+            results[model_name] = predictions.tolist()  
 
         return jsonify(results)
     except Exception as e:
