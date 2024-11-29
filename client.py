@@ -18,12 +18,10 @@ required_columns = [
 
 for col in required_columns:
     if col not in random_rows.columns:
-        random_rows[col] = 0 
+        random_rows[col] = 0
 
 data = random_rows.to_dict(orient='records')
 
-print("Columns in the DataFrame:")
-print(random_rows.columns)
 
 payload = {
     "features": data
@@ -35,8 +33,8 @@ response = requests.post(url, json=payload)
 if response.status_code == 200:
     prediction_results = response.json()
     print("Predictions from all models:")
-    for model_name, prediction in prediction_results.items():
-        print(f"{model_name}: {prediction}")
+    for model_name, predictions in prediction_results.items():
+        print(f"{model_name} predictions: {predictions}")
 else:
     print(f"Error: {response.status_code}")
     print(f"Response: {response.json()}")
