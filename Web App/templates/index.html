@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Model Predictor</title>
+</head>
+<body>
+    <h1>Multi-Model Predictor</h1>
+    <form method="POST" action="/predict">
+        <label>Wind_Chill(F):</label><br>
+        <input type="text" name="Wind_Chill(F)" required><br><br>
+
+        <label>Distance(mi):</label><br>
+        <input type="text" name="Distance(mi)" required><br><br>
+
+        <label>Humidity(%):</label><br>
+        <input type="text" name="Humidity(%)" required><br><br>
+
+        <label>Duration:</label><br>
+        <input type="text" name="Duration" required><br><br>
+
+        <label>Wind_Speed(mph):</label><br>
+        <input type="text" name="Wind_Speed(mph)" required><br><br>
+
+        <label>Start_Lng:</label><br>
+        <input type="text" name="Start_Lng" required><br><br>
+
+        <label>Start_Lat:</label><br>
+        <input type="text" name="Start_Lat" required><br><br>
+
+        <label>Temperature(F):</label><br>
+        <input type="text" name="Temperature(F)" required><br><br>
+
+        <label>Pressure(in):</label><br>
+        <input type="text" name="Pressure(in)" required><br><br>
+
+        <label>Precipitation(in):</label><br>
+        <input type="text" name="Precipitation(in)" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if predictions %}
+        <h2>Model Predictions:</h2>
+        <ul>
+        {% for model, prediction in predictions.items() %}
+            <li>{{ model }}: {{ prediction }}</li>
+        {% endfor %}
+        </ul>
+
+        <h2>Mode of Predictions: {{ prediction_mode }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <h2 style="color: red;">Error: {{ error }}</h2>
+    {% endif %}
+</body>
+</html>
+
