@@ -5,11 +5,11 @@ import pandas as pd
 import math
 
 model_paths = {
-    "BaggingClassifier": r"C:\Users\nisha\Desktop\ML App\BaggingClassifier.joblib",
-    "LGBM": r"C:\Users\nisha\Desktop\ML App\LGBM.joblib",
-    "NN": r"C:\Users\nisha\Desktop\ML App\NN.joblib",
-    "RandomForest": r"C:\Users\nisha\Desktop\ML App\RandomForest.joblib",
-    "SVM": r"C:\Users\nisha\Desktop\ML App\SVM.joblib"
+    "BaggingClassifier": "BaggingClassifier.joblib",
+    "LGBM": "LGBM.joblib",
+    "NN": "NN.joblib",
+    "RandomForest": "RandomForest.joblib",
+    "SVM": "SVM.joblib"
 }
 models = {name: load(path) for name, path in model_paths.items()}
 
